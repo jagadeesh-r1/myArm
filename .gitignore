@@ -30,3 +30,6 @@ Makefile
 
 # Ignore Content Packs
 Content/StarterContent/
+
+# tracking datapoints
+*.csv
