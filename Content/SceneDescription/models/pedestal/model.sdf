@@ -1,0 +1,180 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+	<model name="pedestal">
+		<link name="base">
+			<visual name="base_visual">
+				<pose>0 0 0 0 0 3.141592</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>pedestal/meshes/PedestalCabinet.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="joint_1" type="prismatic">
+			<pose>0 0 0.02 0 1.570796 0</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>drawer_1</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="drawer_1">
+			<visual name="drawer_1_visual">
+				<pose>0 0 0 0 1.570796 3.141592</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>pedestal/meshes/PedestalDrawer.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="drawer_1_handle_joint" type="fixed">
+			<pose>-0.087 0 0.235 0 0 0</pose>
+			<parent>drawer_1</parent>
+			<child>drawer_1_handle</child>
+		</joint>
+		<link name="drawer_1_handle">
+			<visual name="drawer_1_handle_visual">
+				<pose>0 0 0 0 1.570796 3.141592</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>pedestal/meshes/PedestalDrawerHandle.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="joint_2" type="prismatic">
+			<pose>0 0 0.199 0 1.570796 0</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>drawer_2</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="drawer_2">
+			<visual name="drawer_2_visual">
+				<pose>0 0 0 0 1.570796 3.141592</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>pedestal/meshes/PedestalDrawer.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="drawer_2_handle_joint" type="fixed">
+			<pose>-0.087 0 0.235 0 0 0</pose>
+			<parent>drawer_2</parent>
+			<child>drawer_2_handle</child>
+		</joint>
+		<link name="drawer_2_handle">
+			<visual name="drawer_2_handle_visual">
+				<pose>0 0 0 0 1.570796 3.141592</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>pedestal/meshes/PedestalDrawerHandle.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="joint_3" type="prismatic">
+			<pose>0 0 0.378 0 1.570796 0</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>drawer_3</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="drawer_3">
+			<visual name="drawer_3_visual">
+				<pose>0 0 0 0 1.570796 3.141592</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>pedestal/meshes/PedestalDrawer.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="drawer_3_handle_joint" type="fixed">
+			<pose>-0.087 0 0.235 0 0 0</pose>
+			<parent>drawer_3</parent>
+			<child>drawer_3_handle</child>
+		</joint>
+		<link name="drawer_3_handle">
+			<visual name="drawer_3_handle_visual">
+				<pose>0 0 0 0 1.570796 3.141592</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>pedestal/meshes/PedestalDrawerHandle.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="joint_4" type="prismatic">
+			<pose>0 0 0.557 0 1.570796 0</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>drawer_4</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="drawer_4">
+			<visual name="drawer_4_visual">
+				<pose>0 0 0 0 1.570796 3.141592</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>pedestal/meshes/PedestalDrawer.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="drawer_4_handle_joint" type="fixed">
+			<pose>-0.087 0 0.235 0 0 0</pose>
+			<parent>drawer_4</parent>
+			<child>drawer_4_handle</child>
+		</joint>
+		<link name="drawer_4_handle">
+			<visual name="drawer_4_handle_visual">
+				<pose>0 0 0 0 1.570796 3.141592</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>pedestal/meshes/PedestalDrawerHandle.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+	</model>
+</sdf>

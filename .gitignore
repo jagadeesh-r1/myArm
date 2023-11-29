@@ -1,0 +1,32 @@
+# Binaries and Built data
+Binaries/*
+Intermediate/*
+DerivedDataCache/*
+Build/*
+Game/*
+
+# Saved data
+Saved/*
+
+# Makefiles and Editor project files
+CMakeLists.txt
+Makefile
+
+*.code-workspace
+*.pri
+*.kdev4
+*.pro
+*.workspace
+
+*CodeCompletionFolders.txt
+*CodeLitePreProcessor.txt
+
+.ignore
+.vscode/*
+.vs/*
+
+*.bat
+*.sln
+
+# Ignore Content Packs
+Content/StarterContent/

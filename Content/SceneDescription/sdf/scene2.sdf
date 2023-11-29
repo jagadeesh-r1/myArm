@@ -1,0 +1,113 @@
+<?xml version="1.0"  ?>
+<sdf version='1.7'>
+	
+	<!-- <include>
+		<uri>model://cheezit_box</uri>
+		<pose>3.5 2 0.98555 90 90 0</pose>
+	</include> -->
+
+	<include>
+		<uri>model://pedestal</uri>
+		<pose>-2 -1 0 0 0 1.5708</pose>
+	</include>
+
+	<include>
+		<name>Cabinet 3</name>
+		<uri>model://Cabinet_1</uri>
+		<pose>-1 -1 0 0 0 1.5708</pose>
+	</include>
+
+	<include>
+		<uri>model://Fridge</uri>
+		<pose>-1.42 4.1 0 0 0 -1.5708</pose>
+	</include>
+	
+	<include>
+		<name>Cabinet 1</name>
+		<uri>model://Cabinet_1</uri>
+		<pose>-2.07 4.1 0 0 0 -1.5708</pose>
+	</include>
+	
+	<include>
+		<name>Cabinet 2</name>
+		<uri>model://Cabinet_1</uri>
+		<pose>-3.1 2.7 0 0 0 0</pose>
+	</include>
+
+	<!--<include>
+		<name>Cabinet 4</name>
+		<uri>model://Cabinet_1</uri>
+		<pose>3.1 2.7 0 0 0 -3.14</pose>
+	</include>-->
+
+	<include>
+	    <uri>model://Stove_W80</uri>
+		<pose>-3.1 3.4 0 0 0 0</pose>
+	</include>
+
+	<include>
+	    <uri>model://Sink_Cabinet</uri>
+		<pose>-3.1 2 0 0 0 0</pose>
+	</include>
+
+	<!--<include>
+		<uri>model://table</uri>
+		<pose>-1 -1 0 0 0 0</pose>	
+	</include>-->
+	
+	<include>
+		<name>wall 1</name>
+		<uri>model://Wall_1</uri>
+		<pose>-3.5 2.72 0 0 0 0</pose>
+	</include>
+	
+	<include>
+		<name>wall 2</name>
+		<uri>model://Wall_1</uri>
+		<pose>-1.9 4.5 0 0 0 -1.5708</pose>
+	</include>
+	
+	<include>
+		<uri>model://Wall_3</uri>
+		<pose>4.2 3.1 0 0 0 0</pose>
+	</include>
+	
+	<include>
+		<uri>model://Wall_4</uri>
+		<pose>2.6 4.5 0 0 0 -1.5708</pose>
+	</include>
+<!-- 
+	<include>
+		<uri>model://Closet</uri>
+		<pose>1.6 4 0 0 0 0</pose>
+	</include> -->
+
+	<!-- <include>
+		<uri>model://Study_Desk</uri>
+		<pose>3.5 2.6 0 0 0 -1.5708</pose>
+	</include> -->
+	
+	<!-- <include>
+		<uri>model://Chair</uri>
+		<pose>3.2 2.6 0 0 0 1.5708</pose>
+	</include> -->
+	
+	<!-- <include>
+		<uri>model://Lamp</uri>
+		<pose>3.6 3 0.9 0 0 -0.785398</pose>
+	</include> -->
+
+	<include>
+		<name>Block 1</name>
+		<uri>model://Block</uri>
+		<pose>-2.9 4.1 0 0 0 0</pose>
+	</include>
+	
+	<include>
+		<name>wall 5</name>
+		<uri>model://Wall_1</uri>
+		<pose>-1 -1.25 0 0 0 -1.5708</pose>
+	</include>
+
+</sdf>
+<!-- remove chair, walls robot hands, -->

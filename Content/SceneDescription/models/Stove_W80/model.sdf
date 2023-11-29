@@ -1,0 +1,250 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+	<model name="Stove_W80">
+		<link name="base">
+			<visual name="Stove_W80_visual">
+				<pose>0 0 0 0 0 7.853982</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cube_031.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="draw_joint" type="prismatic">
+			<pose>0 0 0.02 0 1.570796 0</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>stove_draw</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.5</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="stove_draw">
+			<visual name="stove_visual">
+				<pose>-0.08 0 0.315 0 -1.570796 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cube_050.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="draw_handle_joint" type="fixed">
+			<pose>-0.08 0 0.315 0 0 0</pose>
+			<parent>stove_draw</parent>
+			<child>draw_handle</child>
+		</joint>
+		<link name="draw_handle">
+			<visual name="draw_handle_visual">
+				<pose>0 0 0.05 0 0 -1.570796</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Handle.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		
+		<joint name="inner_panel_joint" type="fixed">
+			<pose>0.3 0 0.215 0 -3.141592 -7.853982</pose>
+			<parent>base</parent>
+			<child>inner_panel</child>
+		</joint>
+		<link name="inner_panel">
+			<visual name="inner_panel_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cube_041.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+
+
+		<joint name="top_joint" type="fixed">
+			<pose>0 0 0.8 0 0 0</pose>
+			<parent>base</parent>
+			<child>stove_top</child>
+		</joint>
+		<link name="stove_top">
+			<visual name="stove_top_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cube_044.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="door_joint" type="revolute">
+			<pose>0.3 0 0.225 -1.570796 -1.570796 0</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>stove_door</child>
+			<limit>
+				<lower>0</lower>
+				<upper>1.570796</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="stove_door">
+			<visual name="stove_door_visual">
+				<pose>0 0 0 0 0 0 </pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_door_updated.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="door_handle_joint" type="fixed">
+			<pose>0.425 0.015 0.3 0 0 0</pose>
+			<parent>stove_door</parent>
+			<child>door_handle</child>
+		</joint>
+		<link name="door_handle">
+			<visual name="door_handle_visual">
+				<pose>0 0 0 -1.570796 3.141592 0 </pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_door_handle_updated.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+<!-- 
+
+		<joint name="door_handle_right_joint" type="fixed">
+			<pose>0.315 -0.3 0.65 0 1.570796 0</pose>
+			<parent>base</parent>
+			<child>door_right_handle</child>
+		</joint>
+		<link name="door_right_handle">
+			<visual name="door_right_handle_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cylinder.001.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="door_handle_left_joint" type="fixed">
+			<pose>0.315 0.3 0.65 0 1.570796 0</pose>
+			<parent>base</parent>
+			<child>door_left_handle</child>
+		</joint>
+		<link name="door_left_handle">
+			<visual name="door_left_handle_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cylinder.002.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link> -->
+
+
+		<joint name="nozzle_support_joint" type="fixed">
+			<pose>0.315 0 0.8 0 0 7.853982</pose>
+			<parent>base</parent>
+			<child>nozzle_support</child>
+		</joint>
+		<link name="nozzle_support">
+			<visual name="nozzle_support_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cube_030.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="nozzle_1_joint" type="fixed">
+			<pose>0.325 -0.3 0.75 0 1.570796 0</pose>
+			<parent>base</parent>
+			<child>stove_nozzle_1</child>
+		</joint>
+		<link name="stove_nozzle_1">
+			<visual name="stove_nozzle_1_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cylinder_003.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="nozzle_2_joint" type="fixed">
+			<pose>0.325 -0.1 0.75 0 1.570796 0</pose>
+			<parent>base</parent>
+			<child>stove_nozzle_2</child>
+		</joint>
+		<link name="stove_nozzle_2">
+			<visual name="stove_nozzle_2_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cylinder_004.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="nozzle_3_joint" type="fixed">
+			<pose>0.325 0.1 0.75 0 1.570796 0</pose>
+			<parent>base</parent>
+			<child>stove_nozzle_3</child>
+		</joint>
+		<link name="stove_nozzle_3">
+			<visual name="stove_nozzle_3_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cylinder_005.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="nozzle_4_joint" type="fixed">
+			<pose>0.325 0.3 0.75 0 1.570796 0</pose>
+			<parent>base</parent>
+			<child>stove_nozzle_4</child>
+		</joint>
+		<link name="stove_nozzle_4">
+			<visual name="stove_nozzle_4_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W80_D60_H80_Raw_Cylinder_006.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+	</model>
+</sdf>

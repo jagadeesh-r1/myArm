@@ -1,0 +1,199 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+	<model name="Sink_Cabinet">		
+		<link name="base">
+			<visual name="Sink_cabinet_outer_visual">
+				<pose>0 0 0 0 0 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_H80_Cube_034.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="left_door_joint" type="revolute">
+			<pose>0.3 0.385 0.015 0 0 -1.570796</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>sink_left_door</child>
+			<limit>
+				<lower>0</lower>
+				<upper>1</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="sink_left_door">
+			<visual name="Sink_cabinet_left_door_visual">
+			<pose>0 0 0 0 0 0 </pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_left_door.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="sink_left_handle_joint" type="fixed">
+			<pose>0.365 0.05 0.3 3.141592 -1.570796 1.570796</pose>
+			<parent>sink_left_door</parent>
+			<child>sink_left_door_handle</child>
+		</joint>
+		<link name="sink_left_door_handle">
+			<visual name="Sink_cabinet_left_door_handle_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_right_door_handle.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="right_door_joint" type="revolute">
+			<pose>0.3 -0.385 0.585 3.141592 0 1.570796</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>sink_right_door</child>
+			<limit>
+				<lower>0</lower>
+				<upper>1</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="sink_right_door">
+			<visual name="Sink_cabinet_right_door_visual">
+				<pose>0 -0.015 0 0 0 0 </pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_right_door.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="sink_right_handle_joint" type="fixed">
+			<pose>0.365 0.05 0.28 3.141592 -1.570796 1.570796</pose>
+			<parent>sink_right_door</parent>
+			<child>sink_right_door_handle</child>
+		</joint>
+		<link name="sink_right_door_handle">
+			<visual name="Sink_cabinet_right_door_handle_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_left_door_handle.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+
+		<joint name="sink" type="fixed">
+			<pose>0.05 0 0.807 0 0 0</pose>
+			<parent>base</parent>
+			<child>sink_cabinet</child>
+		</joint>
+		<link name="sink_cabinet">
+			<visual name="Sink_cabinet_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_H80_Sink.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="left_tap_joint" type="revolute">
+			<pose>-0.225 0.1 0.82 0 0 1.570796</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>left_tap</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="left_tap">
+			<visual name="Sink_cabinet_left_tap_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_H80_TapL.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+
+		<joint name="right_tap_joint" type="revolute">
+			<pose>-0.225 -0.1 0.82 0 0 -1.570796</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>right_tap</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="right_tap">
+			<visual name="Sink_cabinet_right_tap_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_H80_TapR.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+
+		<joint name="faucet_base" type="fixed">
+			<pose>-0.225 0 0.8 0 0 0</pose>
+			<parent>base</parent>
+			<child>sink_faucet_base</child>
+		</joint>
+		<link name="sink_faucet_base">
+			<visual name="Sink_cabinet_faucet_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_H80_FaucetBase.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="faucet_joint" type="fixed">
+			<pose>-0.225 0 0.82 0 0 0</pose>
+			<parent>base</parent>
+			<child>faucet</child>
+		</joint>
+		<link name="faucet">
+			<visual name="Sink_cabinet_faucet_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Sink_Cabinet_W80_D60_H80_Faucet.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+	</model>
+</sdf>

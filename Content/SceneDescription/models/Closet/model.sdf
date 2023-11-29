@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+	<model name="Closet">
+
+		<link name="base">
+			<visual name="closet_visual">
+				<pose>0 0 0 0 1.5708 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Closet_frame.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="slide_door_1_joint" type="prismatic">
+			<pose>-0.45 -0.2935 1.1106 0 0 0</pose>
+			<axis>
+				<xyz>1 0 0</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>slide_door_1</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="slide_door_1">
+			<visual name="slide_door_1_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Closet_door01.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		
+
+		<joint name="slide_door_2_joint" type="prismatic">
+			<pose>-0.56963 -0.27239 1.1106 0 0 0</pose>
+			<axis>
+				<xyz>1 0 0</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>slide_door_2</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="slide_door_2">
+			<visual name="slide_door_2_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Closet_door02.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+	</model>
+</sdf>

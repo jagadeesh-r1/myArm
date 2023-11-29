@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+
+<robot name="pedestal">
+
+  <link name="base">
+    <visual>
+      <origin rpy="0 0 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/PedestalCabinet.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="joint_1" type="prismatic">
+    <origin rpy="0 1.570796 0" xyz="0 0 0.02"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base"/>
+    <child link="drawer_1"/>
+    <limit lower="0" upper="0.45" velocity="0" effort="0"/>
+  </joint>
+  
+  <link name="drawer_1">
+    <visual>
+      <origin rpy="0 1.570796 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/PedestalDrawer.dae"/>
+      </geometry>
+     </visual>
+  </link>
+  
+  <joint name="drawer_1_handle_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.087 0 0.235"/>
+    <parent link="drawer_1"/>
+    <child link="drawer_1_handle"/>
+  </joint>
+
+  <link name="drawer_1_handle">
+    <visual>
+      <origin rpy="0 1.570796 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/PedestalDrawerHandle.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="joint_2" type="prismatic">
+    <origin rpy="0 1.570796 0" xyz="0 0 0.199"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base"/>
+    <child link="drawer_2"/>
+    <limit lower="0" upper="0.45" velocity="0" effort="0"/>
+  </joint>
+  
+  <link name="drawer_2">
+    <visual>
+      <origin rpy="0 1.570796 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/PedestalDrawer.dae"/>
+      </geometry>
+     </visual>
+  </link>
+  
+  <joint name="drawer_2_handle_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.087 0 0.235"/>
+    <parent link="drawer_2"/>
+    <child link="drawer_2_handle"/>
+  </joint>
+
+  <link name="drawer_2_handle">
+    <visual>
+      <origin rpy="0 1.570796 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/PedestalDrawerHandle.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="joint_3" type="prismatic">
+    <origin rpy="0 1.570796 0" xyz="0 0 0.378"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base"/>
+    <child link="drawer_3"/>
+    <limit lower="0" upper="0.45" velocity="0" effort="0"/>
+  </joint>
+  
+  <link name="drawer_3">
+    <visual>
+      <origin rpy="0 1.570796 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/PedestalDrawer.dae"/>
+      </geometry>
+     </visual>
+  </link>
+  
+  <joint name="drawer_3_handle_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.087 0 0.235"/>
+    <parent link="drawer_3"/>
+    <child link="drawer_3_handle"/>
+  </joint>
+
+  <link name="drawer_3_handle">
+    <visual>
+      <origin rpy="0 1.570796 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/PedestalDrawerHandle.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="joint_4" type="prismatic">
+    <origin rpy="0 1.570796 0" xyz="0 0 0.557"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base"/>
+    <child link="drawer_4"/>
+    <limit lower="0" upper="0.45" velocity="0" effort="0"/>
+  </joint>
+  
+  <link name="drawer_4">
+    <visual>
+      <origin rpy="0 1.570796 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/PedestalDrawer.dae"/>
+      </geometry>
+     </visual>
+  </link>
+  
+  <joint name="drawer_4_handle_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.087 0 0.235"/>
+    <parent link="drawer_4"/>
+    <child link="drawer_4_handle"/>
+  </joint>
+
+  <link name="drawer_4_handle">
+    <visual>
+      <origin rpy="0 1.570796 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/PedestalDrawerHandle.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+</robot>

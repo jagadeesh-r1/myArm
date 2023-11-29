@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<object name="cheezit_box" type="simple">
+
+  <link name="base">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="/meshes/textured.obj"/>
+      </geometry>
+    </visual>
+  </link>
+
+</object>

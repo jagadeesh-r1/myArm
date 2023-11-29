@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+	<model name="Study_Desk">
+
+		<link name="base">
+			<visual name="table_structure_visual">
+				<pose>0 0 0 0 0 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Structure.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="table_top_joint" type="fixed">
+			<pose>0 0 0 0 0 0</pose>
+			<parent>base</parent>
+			<child>table_top</child>
+		</joint>
+		<link name="table_top">
+			<visual name="table_top_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Top.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+
+
+		<joint name="draw_1_joint" type="prismatic">
+			<pose>0.60466 -0.17652 0.77736 0 0 0</pose>
+			<axis>
+				<xyz>0 -1 0</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>draw_1</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="draw_1">
+			<visual name="draw_1_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Draw001.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		
+
+		<joint name="draw_2_joint" type="prismatic">
+			<pose>0.60466 -0.17652 0.52226 0 0 0</pose>
+			<axis>
+				<xyz>0 -1 0</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>draw_2</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="draw_2">
+			<visual name="draw_2_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Draw002.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="draw_3_joint" type="prismatic">
+			<pose>0.60491 -0.10893 0.23772 0 0 0</pose>
+			<axis>
+				<xyz>0 -1 0</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>draw_3</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="draw_3">
+			<visual name="draw_3_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Draw003.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<joint name="door_joint" type="revolute">
+			<pose>-0.85532 -0.2838 0.11564 0 0 0</pose>
+			<axis>
+				<xyz>0 0 -1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>door</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="door">
+			<visual name="door_visual">
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Door.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+	</model>
+</sdf>

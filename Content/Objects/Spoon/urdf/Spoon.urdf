@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<object name="spoon" type="simple">
+
+  <link name="base">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="/meshes/Spoon.obj"/>
+      </geometry>
+    </visual>
+  </link>
+
+</object>

@@ -1,0 +1,179 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+	<model name="Stove_W60">
+		<link name="base">
+			<visual name="Stove_W60_visual">
+				<pose>0 0 0 0 0 7.853982</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cube_031.obj</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<link name="stove_top">
+			<visual name="stove_top_visual">
+				<pose>0 0.8 0 0 0 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cube_044.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>	
+
+		<joint name="stove_W60_joint_1" type="revolute">
+			<pose>0.3 0 0.225 0 0 4.712389</pose>
+			<axis>
+				<xyz>0 1 0</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>stove_draw_1</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="stove_draw_1">
+			<visual name="stove_visual_1">
+				<pose>0.3 0 0.225 0 0 4.712389</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cube_043.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="stove_draw_1_handle_joint" type="fixed">
+			<pose>0.35 0 0.65 1.570796 0 0</pose>
+			<parent>stove_draw_1</parent>
+			<child>stove_draw_1_handle</child>
+		</joint>
+		<link name="stove_draw_1_handle">
+			<visual name="draw_1_handle_visual">
+				<pose>0.35 0 0.65 1.570796 0 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cylinder.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<link name="stove_nozzle_board">
+			<visual name="stove_visual_2">
+				<pose>0.315 0 0.8 0 0 7.853982</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cube_030.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<link name="stove_inside_compartment">
+			<visual name="stove_inside_compartment_visual">
+				<pose>0.3 0 0.215 0 -3.141593 7.853982</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cube_041.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+
+		<link name="stove_nozzle_1">
+			<visual name="stove_visual_3">
+				<pose>0.325 -0.3 0.75 0 1.570796 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cylinder_003.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<link name="stove_nozzle_2">
+			<visual name="stove_visual_4">
+				<pose>0.325 -0.1 075 0 1.570796 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cylinder_004.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<link name="stove_nozzle_3">
+			<visual name="stove_visual_5">
+				<pose>0.325 0.1 0.75 0 1.570796 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cylinder_005.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<link name="stove_nozzle_4">
+			<visual name="stove_visual_6">
+				<pose>0.325 0.3 0.75 0 1.570796 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cylinder_006.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		
+		<joint name="stove_W60_joint_2" type="prismatic">
+			<pose>0.315 0 0.1 0 0 0</pose>
+			<axis>
+				<xyz>0 0 1</xyz>
+			</axis>
+			<parent>base</parent>
+			<child>stove_draw_2</child>
+			<limit>
+				<lower>0</lower>
+				<upper>0.45</upper>
+				<velocity>0</velocity>
+				<effort>0</effort>
+			</limit>
+		</joint>
+		<link name="stove_draw_2">
+			<visual name="stove_visual_3">
+				<pose>0.315 0 0.1 0 0 0</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Cube_050.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="stove_draw_2_handle_joint" type="fixed">
+			<pose>0.365 0 0.1 1.570796 -3.141593 1.570796</pose>
+			<parent>stove_draw_2</parent>
+			<child>stove_draw_2_handle</child>
+		</joint>
+		<link name="stove_draw_2_handle">
+			<visual name="draw_2_handle_visual">
+				<pose>0.365 0 0.1 1.570796 -3.141593 1.570796</pose>
+				<geometry>
+					<mesh>
+						<scale>1 1 1</scale>
+						<uri>meshes/Stove_W60_D60_H80_Raw_Handle.fbx</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+	</model>
+</sdf>

@@ -1,0 +1,79 @@
+<robot_list>
+	
+	<robot>
+		<urdf_file_path>/RobotDescription/urdf/robot_description.urdf</urdf_file_path>
+		<resources_dir>/Game/RobotDescription</resources_dir>
+		<name>baxter</name>
+		<base_pose>
+			<translation x="2.5" y="0" z="0.925"/>
+			<rotation angle="0" axis_x="0" axis_y="0" axis_z="1"/>
+		</base_pose>
+	</robot>
+	
+
+	
+	<robot>
+		<urdf_file_path>/RobotDescription/kinova/urdf/j2n7s300_standalone.urdf</urdf_file_path>
+		<resources_dir>/Game/RobotDescription</resources_dir>
+		<name>j2n7s300</name>
+		<base_pose>
+			<translation x="0" y="2.5" z="0.65"/>
+			<rotation angle="3.14159265359" axis_x="0" axis_y="0" axis_z="1"/>
+		</base_pose>
+		<initial_joint_positions>
+			<joint name="j2n7s300_joint_1">0.0</joint>
+			<joint name="j2n7s300_joint_2">3.14159265359</joint>
+			<joint name="j2n7s300_joint_3">0.0</joint>
+			<joint name="j2n7s300_joint_4">3.14159265359</joint>
+			<joint name="j2n7s300_joint_5">0.0</joint>
+			<joint name="j2n7s300_joint_6">0.0</joint>
+			<joint name="j2n7s300_joint_7">0.0</joint>
+			<joint name="j2n7s300_joint_finger_1">0.0</joint>
+			<joint name="j2n7s300_joint_finger_tip_1">0.0</joint>
+			<joint name="j2n7s300_joint_finger_2">0.0</joint>
+			<joint name="j2n7s300_joint_finger_tip_2">0.0</joint>
+			<joint name="j2n7s300_joint_finger_3">0.0</joint>
+			<joint name="j2n7s300_joint_finger_tip_3">0.0</joint>
+		</initial_joint_positions>
+	</robot>
+	
+	
+	<robot>
+		<urdf_file_path>/RobotDescription/urdf/mobile_manipulator.urdf</urdf_file_path>
+		<resources_dir>/Game/RobotDescription</resources_dir>
+		<name>mobile_manipulator</name>
+		<base_pose>
+			<translation x="-2.5" y="0" z="0.13228"/>
+			<rotation angle="3.14159265359" axis_x="0" axis_y="0" axis_z="1"/>
+		</base_pose>
+		<initial_joint_positions>
+			<joint name="panda_joint1">0.0</joint>
+			<joint name="panda_joint2">-0.7853981633974483</joint>
+			<joint name="panda_joint3">0.0</joint>
+			<joint name="panda_joint4">-2.356194490192345</joint>
+			<joint name="panda_joint5">0.0</joint>
+			<joint name="panda_joint6">1.5707963267948966</joint>
+			<joint name="panda_joint7">0.7853981633974483</joint>
+		</initial_joint_positions>
+	</robot>
+
+	<robot>
+		<urdf_file_path>/RobotDescription/urdf/ur10_robot.urdf</urdf_file_path>
+		<resources_dir>/Game/RobotDescription</resources_dir>
+		<name>ur10</name>
+		<base_pose>
+			<translation x="0" y="-2.5" z="0.85"/>
+			<rotation angle="3.14159265359" axis_x="0" axis_y="0" axis_z="1"/>
+		</base_pose>
+		<initial_joint_positions>
+			<joint name="shoulder_pan_joint">0.0</joint>
+			<joint name="shoulder_lift_joint">0.0</joint>
+			<joint name="elbow_joint">0.0</joint>
+			<joint name="wrist_1_joint">0.0</joint>
+			<joint name="wrist_2_joint">0.0</joint>
+			<joint name="wrist_3_joint">0.0</joint>
+		</initial_joint_positions>
+	</robot>
+	
+
+</robot_list>
