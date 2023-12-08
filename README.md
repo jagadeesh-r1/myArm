@@ -1,37 +1,17 @@
 # UnrealSim
-First Things to Know:
-For this Project UnrealSim, main branch is working all the platforms(windows, mac, ubuntu) but we use urdf parser to simulate all the objects(simple and articualted) and robots in unreal engine. But here we have to manually hardcode the objections positions and other stuff in the code
+## Project Description: 
+This is a VR Simulation of (Human-Guided Planning for Complex Manipulation Tasks Using the Screw Geometry of Motion)[https://irsl-sbu.github.io/Human-Guided-Planning/]
+ 
+This project is a VR simulation of a Kitchen environment. The simulation is built using Unreal Engine 4.27.4 and the VR headset used is Oculus Quest. The simulation is built using the Unreal Engine's C++ API. 
+To Navigate in the sim, use the thumsticks on both controllers to get to desired position. We can interact the objects in the simulation using the grip button on the Right VR controller.
+Grab on the handles of cabinets/fridge doors/ drawers to open them. Grab on the objects to move them around.
 
-sdf_integration branch is useful in this case, where we can add mention the complete scene in an sdf file where we can simulate all the objects but for robots we are still using urdf parser.
-
-but the disadvantage here currently is our sdf parser is only working in windows. The issues we faced were.
-
-
-Setting up the Project:
-This Unreal Project has 2 modules, named "UnrealSim" and "SDF". The Second Module "SDF" is an external module which uses SDFLibrary which is a third party 
-c++ library, which again needs multiple dependencies to install first.
-The Following Dependencies are needed for SDF Library to work.
-1. Ignition Math
-2. Ruby
-3. boost-cpp
-4. tinyxml
-5. urdfdom
-
-Take a look at the below commands to get the dll files for windows. You have to follow these similar commands to get the project working in your windows machine
- cd sdformat
- mkdir build
- cd build
- ls
- cmake .. -DCMAKE_INSTALL_PREFIX=./install
- make install
-
-this way you have to install all the c++ libraries in the windows system.
-
-After Setting up the libraries you have to open visual studio and then open unreal engine to open the project.
-
-sdf files are located at UnrealSim/Content/SceneDescriptin/sdf/ and for every new object that you add you need to add, add the meshes at 
-UnrealSim/Content/SceneDescription/meshes/<objectName>/   
-
-this way we can simulate the objects in unreal engine.
-
+Steps to run the VR simulation:
+1. Install Unreal Engine 4.27.4
+2. Install the Oculus App. Follow the instructions here: https://www.meta.com/help/quest/articles/headsets-and-accessories/oculus-rift-s/install-oculus-pc-app/
+3. Clone this repository
+4. Create a solution file for Visual Studio 2019 by right clicking on the .uproject file and selecting "Generate Visual Studio project files"
+5. Make sure to activate oculus link on your headset and connect it to your computer before luanching the project in Unreal Engine
+6. Once the oculus device is connected, click on the play(change it to VR Preview) button in Unreal Engine to launch the simulation
+7. Make Changes to scene2.sdf file in VRSim\Content\SceneDescription\sdf folder to make changes to the scene
 
