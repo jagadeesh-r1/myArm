@@ -27,6 +27,11 @@ Eigen::Quaterniond MotionEngineStatics::UnrealToROS(const FQuat &Quat)
     Eigen::Quaterniond Res;
 
 
+    Res.w() = Quat.W;
+    Res.x() = -Quat.X;
+    Res.y() = Quat.Y;
+    Res.z() = -Quat.Z;
+
     return Res;
 }
 

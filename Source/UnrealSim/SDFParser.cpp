@@ -128,7 +128,7 @@ bool SDFParser::ParseGeometry(sdf::ElementPtr geometryElement, FString ResourceD
             UE_LOG(SDFParserLog, Display, TEXT("Link mesh directory : %s"), *NewLinkGeoMesh->MeshDirectory);
             UE_LOG(SDFParserLog, Display, TEXT("Link mesh filename  : %s"), *NewLinkGeoMesh->MeshFileName);
         }
-
+        
         NewGeometry = NewLinkGeoMesh;
     }
     

@@ -218,125 +218,136 @@ void AMyPawn::Tick(float DeltaTime)
 			TSharedPtr<MotionEngine::TreeRecursiveSolver> Solver = MakeShareable(new MotionEngine::TreeRecursiveSolver());
 			Solver->InitializeSolver(ArticulatedMObject->ObjectTree);
 
-			//for (const TPair<FString, TSharedPtr<MotionEngine::JointState>>& pair: ArticulatedMObject->ObjectTree->TreeJointStateMap) {
-			//	GLog->Log(pair.Key + " pair Name");
-			//}
 			int direction = 1;
-		/*	for (const TPair<FString, TSharedPtr<MotionEngine::LinkState>>& pair : ArticulatedMObject->ObjectTree->TreeLinkStateMap) {
-				GLog->Log(pair.Key + " link Name");
-			}*/
 
-			if (ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement->ElementType == MotionEngine::ArticulatedElement::JOINT) {
-				GLog->Log(ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement->Name + " Parent name of  GRABBED");
-
-
-				TSharedPtr<MotionEngine::Joint> HandleJoint(StaticCastSharedPtr<MotionEngine::Joint>(ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement));
+			if (ArticulatedMObject->ObjectName == "glass" || ArticulatedMObject->ObjectName == "bowl" || ArticulatedMObject->ObjectName == "sphere" || ArticulatedMObject->ObjectName == "spoon") {
 				
+				FQuat controller_quat = RightMesh->GetComponentRotation().Quaternion();
+				Eigen::Quaterniond controller_quat_eigrn = MotionEngine::MotionEngineStatics::UnrealToROS(controller_quat);
 
-				if (HandleJoint->Type == MotionEngine::Joint::FIXED) {
-					GLog->Log(HandleJoint->ParentLinkName);
-					GLog->Log(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name + " Parent name of  GRABBED");
+				Eigen::Matrix3d R = controller_quat_eigrn.toRotationMatrix();
+				Eigen::Matrix4d Controller_pose;
+				Controller_pose.setIdentity();
+				Controller_pose.block<3, 3>(0, 0) = R * Controller_Object_Relative_pose;
+				Controller_pose.block<3, 1>(0, 3) = CurrentPositionEigen + initial_distance;;
 
-					if (ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Type == MotionEngine::Joint::PRISMATIC) {
-						TSharedPtr<MotionEngine::JointState> Currentjointstate(StaticCastSharedPtr<MotionEngine::JointState>(ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]));
-						double InitialJointPos = *Currentjointstate->JointPosition.Get();
+				//Eigen::Matrix4d object_pose = Controller_pose * Controller_Object_Relative_TF;
 
-						Eigen::Matrix4d JointG = *Currentjointstate->JointG.Get();
-						double jointX = JointG[12];
-						double jointY = JointG[13];
-						double jointZ = JointG[14];
-
-						double MinJointVal = ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Limits.LowerLimit;
-						double MaxJointVal = ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Limits.UpperLimit;
-
-
-
-						Eigen::Vector3d joint_axis_vector_eigen(JointG[8], JointG[9], JointG[10]);
-
-						float deltax_eigen = joint_axis_vector_eigen.dot(Velocity_eigen);
-						GLog->Log("deltavalue before : " + FString::SanitizeFloat(deltax_eigen));
+				TreeRSolver->SolvePositionFK(Controller_pose);
+			}
+			else {
+				if (ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement->ElementType == MotionEngine::ArticulatedElement::JOINT) {
+					GLog->Log(ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement->Name + " Parent name of  GRABBED");
 
 
-						int scale_factor = 65;
-						double newposition = InitialJointPos + deltax_eigen / scale_factor * direction;
-						//double newposition = InitialJointPos + (((MaxJointVal - MinJointVal) / 5) * deltax);
-
-						//GLog->Log("InitialPos: " + FString::SanitizeFloat(InitialJointPos));
-						//GLog->Log("newposition: "+ FString::SanitizeFloat(newposition));
+					TSharedPtr<MotionEngine::Joint> HandleJoint(StaticCastSharedPtr<MotionEngine::Joint>(ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement));
 
 
-						if (newposition <= MaxJointVal && newposition >= MinJointVal) {
+					if (HandleJoint->Type == MotionEngine::Joint::FIXED) {
+						GLog->Log(HandleJoint->ParentLinkName);
+						GLog->Log(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name + " Parent name of  GRABBED");
 
-							GLog->Log("In between--------" + ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement->Name]->Name);
+						if (ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Type == MotionEngine::Joint::PRISMATIC) {
+							TSharedPtr<MotionEngine::JointState> Currentjointstate(StaticCastSharedPtr<MotionEngine::JointState>(ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]));
+							double InitialJointPos = *Currentjointstate->JointPosition.Get();
 
-							TMap<FString, double> XXXXXX;
-							GLog->Log(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name + "++++++++++++++++++++++++++++");
-							XXXXXX.Add(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name, newposition);
+							Eigen::Matrix4d JointG = *Currentjointstate->JointG.Get();
+							double jointX = JointG[12];
+							double jointY = JointG[13];
+							double jointZ = JointG[14];
 
-							Solver->SolvePositionFK(XXXXXX);
-						}
-					}
-					if (ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Type == MotionEngine::Joint::REVOLUTE) {
-						TSharedPtr<MotionEngine::JointState> Currentjointstate(StaticCastSharedPtr<MotionEngine::JointState>(ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]));
-						double InitialJointPos = *Currentjointstate->JointPosition.Get();
-
-						Eigen::Matrix4d JointG = *Currentjointstate->JointG.Get();
-						double jointX = JointG[12];
-						double jointY = JointG[13];
-						double jointZ = JointG[14];
-
-						double MinJointVal = ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Limits.LowerLimit;
-						double MaxJointVal = ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Limits.UpperLimit;
+							double MinJointVal = ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Limits.LowerLimit;
+							double MaxJointVal = ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Limits.UpperLimit;
 
 
-						Eigen::Vector3d v1_eigen(jointX, jointY, jointZ);
 
-						Eigen::Vector3d r_vector_eigen = (CurrentPositionEigen - v1_eigen);	 
+							Eigen::Vector3d joint_axis_vector_eigen(JointG[8], JointG[9], JointG[10]);
 
-						Eigen::Vector3d joint_axis_vector_eigen(JointG[8], JointG[9], JointG[10]);
+							float deltax_eigen = joint_axis_vector_eigen.dot(Velocity_eigen);
+							GLog->Log("deltavalue before : " + FString::SanitizeFloat(deltax_eigen));
 
-						Eigen::Vector3d tangent_eigen = joint_axis_vector_eigen.cross(r_vector_eigen);
-						tangent_eigen.normalize();
-						float deltax_eigen = tangent_eigen.dot(Velocity_eigen);
-						GLog->Log("abs: " + FString::SanitizeFloat(abs(deltax_eigen)));
-						GLog->Log("max joint value: " + FString::SanitizeFloat(MaxJointVal));
-						GLog->Log("before modifying: " + FString::SanitizeFloat(deltax_eigen));
 
-						int scale_factor = 10;
+							int scale_factor = 65;
+							double newposition = InitialJointPos + deltax_eigen / scale_factor * direction;
+							//double newposition = InitialJointPos + (((MaxJointVal - MinJointVal) / 5) * deltax);
 
-						if (abs(deltax_eigen) > MaxJointVal/5) {
+							//GLog->Log("InitialPos: " + FString::SanitizeFloat(InitialJointPos));
+							//GLog->Log("newposition: "+ FString::SanitizeFloat(newposition));
 
-							deltax_eigen = deltax_eigen/5;
-							if (abs(deltax_eigen) > MaxJointVal / 5) {
-								deltax_eigen = deltax_eigen / 2;
+
+							if (newposition <= MaxJointVal && newposition >= MinJointVal) {
+
+								GLog->Log("In between--------" + ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement->Name]->Name);
+
+								TMap<FString, double> XXXXXX;
+								GLog->Log(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name + "++++++++++++++++++++++++++++");
+								XXXXXX.Add(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name, newposition);
+
+								Solver->SolvePositionFK(XXXXXX);
 							}
 						}
+						if (ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Type == MotionEngine::Joint::REVOLUTE) {
+							TSharedPtr<MotionEngine::JointState> Currentjointstate(StaticCastSharedPtr<MotionEngine::JointState>(ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]));
+							double InitialJointPos = *Currentjointstate->JointPosition.Get();
 
-						double newposition = InitialJointPos + deltax_eigen / scale_factor * direction;
-						//double newposition = InitialJointPos + (((MaxJointVal - MinJointVal) / 5) * deltax);
+							Eigen::Matrix4d JointG = *Currentjointstate->JointG.Get();
+							double jointX = JointG[12];
+							double jointY = JointG[13];
+							double jointZ = JointG[14];
 
-						GLog->Log("after modifying: " + FString::SanitizeFloat(deltax_eigen));
-						GLog->Log("newposition: "+ FString::SanitizeFloat(newposition));
+							double MinJointVal = ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Limits.LowerLimit;
+							double MaxJointVal = ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name]->Limits.UpperLimit;
 
 
-						if (newposition <= MaxJointVal && newposition >= MinJointVal) {
+							Eigen::Vector3d v1_eigen(jointX, jointY, jointZ);
 
-							GLog->Log("In between--------" + ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement->Name]->Name);
+							Eigen::Vector3d r_vector_eigen = (CurrentPositionEigen - v1_eigen);
 
-							TMap<FString, double> XXXXXX;
-							GLog->Log(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name + "++++++++++++++++++++++++++++");
-							XXXXXX.Add(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name, newposition);
+							Eigen::Vector3d joint_axis_vector_eigen(JointG[8], JointG[9], JointG[10]);
 
-							Solver->SolvePositionFK(XXXXXX);
+							Eigen::Vector3d tangent_eigen = joint_axis_vector_eigen.cross(r_vector_eigen);
+							tangent_eigen.normalize();
+							float deltax_eigen = tangent_eigen.dot(Velocity_eigen);
+							GLog->Log("abs: " + FString::SanitizeFloat(abs(deltax_eigen)));
+							GLog->Log("max joint value: " + FString::SanitizeFloat(MaxJointVal));
+							GLog->Log("before modifying: " + FString::SanitizeFloat(deltax_eigen));
+
+							int scale_factor = 10;
+
+							if (abs(deltax_eigen) > MaxJointVal / 5) {
+
+								deltax_eigen = deltax_eigen / 5;
+								if (abs(deltax_eigen) > MaxJointVal / 5) {
+									deltax_eigen = deltax_eigen / 2;
+								}
+							}
+
+							double newposition = InitialJointPos + deltax_eigen / scale_factor * direction;
+							//double newposition = InitialJointPos + (((MaxJointVal - MinJointVal) / 5) * deltax);
+
+							GLog->Log("after modifying: " + FString::SanitizeFloat(deltax_eigen));
+							GLog->Log("newposition: " + FString::SanitizeFloat(newposition));
+
+
+							if (newposition <= MaxJointVal && newposition >= MinJointVal) {
+
+								GLog->Log("In between--------" + ArticulatedMObject->JointMap[ArticulatedMObject->ObjectTree->TreeLinkStateMap[thingIGrabbed->LinkName]->ParentElement->Name]->Name);
+
+								TMap<FString, double> XXXXXX;
+								GLog->Log(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name + "++++++++++++++++++++++++++++");
+								XXXXXX.Add(ArticulatedMObject->ObjectTree->TreeLinkStateMap[HandleJoint->ParentLinkName]->ParentElement->Name, newposition);
+
+								Solver->SolvePositionFK(XXXXXX);
+							}
 						}
 					}
+
 				}
-
 			}
-
 
 		}
 
+		//code to interact with robots
 		//if (ArticulatedMObject->ObjectTree->RootElement->ElementType == MotionEngine::ArticulatedElement::LINK) {
 		//	GLog->Log("*********************************************************");
 		//	//GLog->Log(ArticulatedMObject->ObjectTree->RootElement->Name + "LINK GRABBED");
@@ -487,17 +498,38 @@ void AMyPawn::GripPressed() {
 
 		if (trycast2) {
 			thingIGrabbed2 = trycast2;
+
 		}
 
 		if (trycast) {
 			//this->outputText->SetText("succeed");
 
 			//thingIGrabbed = trycast;
-			thingIGrabbed = trycast;
+			if (thingIGrabbed == nullptr) {
+				thingIGrabbed = trycast;
+				FVector CurrentPosition = RightMesh->GetComponentLocation();
+				Eigen::Vector3d CurrentPositionEigen(CurrentPosition.X / 100, -CurrentPosition.Y / 100, CurrentPosition.Z / 100);
+
+				FQuat controller_quat = RightMesh->GetComponentRotation().Quaternion();
+				Eigen::Quaterniond controller_quat_eigrn = MotionEngine::MotionEngineStatics::UnrealToROS(controller_quat);
+				Eigen::Matrix3d R = controller_quat_eigrn.toRotationMatrix();
+
+				Eigen::Matrix4d Controller_pose;
+				Controller_pose.setIdentity();
+				Controller_pose.block<3, 3>(0, 0) = R;
+				Controller_pose.block<3, 1>(0, 3) = CurrentPositionEigen;
+
+				Eigen::Matrix4d object_pose = *thingIGrabbed->ActorG;
+
+				//Controller_Object_Relative_TF = kinlib::getTransformationInv(Controller_pose) * object_pose;
+				Controller_Object_Relative_pose = object_pose.block<3,3>(0,0);
+				Controller_Object_Relative_pose = R * Controller_Object_Relative_pose;
+
+				initial_distance = object_pose.block<3, 1>(0, 3) - Controller_pose.block<3, 1>(0, 3);
+
+			}
 		}
-		else {
-			//this->outputText->SetText("failed");
-		}
+
 	}
 
 }
@@ -511,7 +543,6 @@ void AMyPawn::GripReleased() {
 void AMyPawn::letGo() {
 	if (thingIGrabbed) {
 		//this->outputText->SetText("grip");
-
 		thingIGrabbed = nullptr;
 	}
 }

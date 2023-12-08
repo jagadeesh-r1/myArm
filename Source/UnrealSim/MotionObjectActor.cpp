@@ -98,6 +98,27 @@ void AMotionObjectActor::InitializeActorProperties(TSharedPtr<MotionEngine::Visu
 					UE_LOG(LogTemp, Display, TEXT("Loading MotionObjectActor VisualMesh from %s"), *MeshPath)
 					UStaticMesh* ThisLinkMesh = (UStaticMesh*)StaticLoadObject(UStaticMesh::StaticClass(), NULL, *FString(MeshPath));
 					VisualMesh->SetStaticMesh(ThisLinkMesh);
+					if (VisualMeshGeometry->MeshFileName == "glass" || VisualMeshGeometry->MeshFileName == "bowl" || VisualMeshGeometry->MeshFileName == "sphere" || VisualMeshGeometry->MeshFileName == "spoon") {
+						UE_LOG(LogTemp, Display, TEXT("Loading MotionObjectActor VisualMesh from ***************************** %s"), *MeshPath)
+						//VisualMesh->SetMobility(EComponentMobility::Movable);
+						////VisualMesh->SetSimulatePhysics(true);
+						//VisualMesh->SetMassOverrideInKg(NAME_None, 0.4f);
+						//VisualMesh->SetGenerateOverlapEvents(true);
+						//VisualMesh->SetCollisionProfileName("PhysicsActor");
+						//VisualMesh->SetNotifyRigidBodyCollision(true);
+						//VisualMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+						if (VisualMeshGeometry->MeshFileName == "sphere") {
+							VisualMesh->SetSimulatePhysics(true);
+							VisualMesh->SetEnableGravity(true);
+							VisualMesh->SetMassOverrideInKg(NAME_None, 0.2f);
+						}
+					}
+					//VisualMesh->SetSimulatePhysics(true);
+					//VisualMesh->SetEnableGravity(true);
+					VisualMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+					VisualMesh->SetMobility(EComponentMobility::Movable);
+					VisualMesh->SetNotifyRigidBodyCollision(true);
+					VisualMesh->SetCollisionProfileName("PhysicsActor");
 				}
 			}
 		}

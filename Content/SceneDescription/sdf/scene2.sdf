@@ -7,6 +7,33 @@
 	</include> -->
 
 	<include>
+		<uri>model://glass</uri>
+		<pose>-3 2.7 0.8 0 0 0</pose>
+	</include>
+
+	<include>
+		<uri>model://bowl</uri>
+		<pose>-3 2.5 0.8 0 0 0</pose>
+	</include>
+
+	<!-- <include>
+		<uri>model://spoon</uri>
+		<pose>-3 2.5 0.8 0 0 0</pose>
+	</include> -->
+
+	<include>
+		<name>sphere1</name>
+		<uri>model://sphere</uri>
+		<pose>-3 2.5 0.85 0 0 0</pose>
+	</include>
+
+	<include>
+		<name>sphere2</name>
+		<uri>model://sphere</uri>
+		<pose>-3 2.5 0.85 0 0 0</pose>
+	</include>
+
+	<!-- <include>
 		<uri>model://pedestal</uri>
 		<pose>-2 -1 0 0 0 1.5708</pose>
 	</include>
@@ -15,7 +42,7 @@
 		<name>Cabinet 3</name>
 		<uri>model://Cabinet_1</uri>
 		<pose>-1 -1 0 0 0 1.5708</pose>
-	</include>
+	</include> -->
 
 	<include>
 		<uri>model://Fridge</uri>
@@ -60,6 +87,18 @@
 		<uri>model://Wall_1</uri>
 		<pose>-3.5 2.72 0 0 0 0</pose>
 	</include>
+
+	<include>
+		<name>wall 7</name>
+		<uri>model://Wall_1</uri>
+		<pose>-3.5 0 0 0 0 0</pose>
+	</include>
+
+	<include>
+		<name>wall 10</name>
+		<uri>model://Wall_1</uri>
+		<pose>-2 -1.25 0 0 0 -1.5708</pose>
+	</include>
 	
 	<include>
 		<name>wall 2</name>
@@ -71,10 +110,21 @@
 		<uri>model://Wall_3</uri>
 		<pose>4.2 3.1 0 0 0 0</pose>
 	</include>
+
+	<include>
+		<name>wall 8</name>
+		<uri>model://Wall_3</uri>
+		<pose>4.2 0.2 0 0 0 0</pose>
+	</include>
 	
 	<include>
 		<uri>model://Wall_4</uri>
 		<pose>2.6 4.5 0 0 0 -1.5708</pose>
+	</include>
+	<include>
+		<name>wall 9</name>
+		<uri>model://Wall_4</uri>
+		<pose>1 4.5 0 0 0 -1.5708</pose>
 	</include>
 <!-- 
 	<include>
@@ -107,6 +157,11 @@
 		<name>wall 5</name>
 		<uri>model://Wall_1</uri>
 		<pose>-1 -1.25 0 0 0 -1.5708</pose>
+	</include>
+		<include>
+		<name>wall 6</name>
+		<uri>model://Wall_1</uri>
+		<pose>2.3 -1.25 0 0 0 -1.5708</pose>
 	</include>
 
 </sdf>

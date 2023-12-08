@@ -61,6 +61,14 @@ bool TreeRecursiveSolver::InitializeSolver(TSharedPtr<Tree> MObjectTree)
     return true;
 }
 
+// temporary code
+void TreeRecursiveSolver::SolvePositionFK(const Eigen::Matrix4d& RootG)
+{
+    *(ObjectTree->TreeLinkStateMap[ObjectTree->RootElement->Name]->LinkG) = RootG;
+    TMap<FString, double> JointPositions;
+    ComputeElementState(ObjectTree->RootElement, RootG , JointPositions);
+}
+
 void TreeRecursiveSolver::SolvePositionFK(const TMap<FString, double> &JointPositions)
 {
     Eigen::Matrix4d BaseG = *(ObjectTree->TreeLinkStateMap[ObjectTree->RootElement->Name]->LinkG);

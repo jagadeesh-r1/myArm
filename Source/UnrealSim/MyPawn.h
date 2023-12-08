@@ -105,9 +105,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FQuat AnglesQuat;
 
+	
+	Eigen::Matrix3d Controller_Object_Relative_pose;
+	Eigen::Vector3d initial_distance;
+
+
 	UFUNCTION(BlueprintCallable)
 		void letGo();
-	AMotionObjectActor* thingIGrabbed;
+	AMotionObjectActor* thingIGrabbed = nullptr;
 	//MotionEngine::ArticulatedMotionObject* trycast2;
 	MotionEngine::ArticulatedElement* thingIGrabbed2;
 

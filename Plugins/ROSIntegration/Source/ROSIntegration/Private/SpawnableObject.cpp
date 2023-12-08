@@ -60,7 +60,7 @@ void ASpawnableObject::SetStaticMesh()
 	{
 		UStaticMeshComponent* FoundComp = Comps[0];
 		FoundComp->SetStaticMesh(pCube);
-		FoundComp->SetSimulatePhysics(ActivatePhysics);
+		//FoundComp->SetSimulatePhysics(ActivatePhysics);
 	} else {
 		UE_LOG(LogROS, Warning, TEXT("No StaticMesh Components in Spawnable. Can't set Mesh"));
 	}

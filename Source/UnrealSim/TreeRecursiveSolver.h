@@ -21,6 +21,7 @@ class TreeRecursiveSolver : public MotionEngineSolver<Tree>
 
         virtual bool InitializeSolver(TSharedPtr<Tree> MObjectTree) override;
 
+        void SolvePositionFK(const Eigen::Matrix4d& RootG);
         void SolvePositionFK(const TMap<FString, double> &JointPositions);
         void SolvePositionFK(const TMap<FString, double>& JointPositions, const Eigen::Matrix4d& RootG);
 

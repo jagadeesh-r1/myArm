@@ -151,13 +151,15 @@ void AUnrealSimGameMode::Tick(float DeltaTime)
         Eigen::Quaterniond OrientationQuat(VisualActorG.block<3,3>(0,0));
         FQuat ActorRot = MotionEngine::MotionEngineStatics::ROSToUnreal(OrientationQuat);
 
-        SceneActors[actor_itr]->SetActorLocationAndRotation(ActorLoc, ActorRot);
-       /* if (SceneActors[actor_itr]->GetName() == "ArticulatedMotionObject_Chairbase") {
-            GLog->Log("*******************************************************************************************");
-            GLog->Log(SceneActors[actor_itr]->GetName());
-            GLog->Log(SceneActors[actor_itr]->GetActorLocation().ToString());
-            GLog->Log("*******************************************************************************************");
-        }*/
+        
+       if (SceneActors[actor_itr]->GetName() == "ArticulatedMotionObject_sphere1base" || SceneActors[actor_itr]->GetName() == "ArticulatedMotionObject_glassbase" || SceneActors[actor_itr]->GetName() == "ArticulatedMotionObject_sphere2base") {
+            
+           /* GLog->Log(SceneActors[actor_itr]->GetActorLocation().ToString());
+            GLog->Log("*******************************************************************************************");*/
+        }
+       else {
+           SceneActors[actor_itr]->SetActorLocationAndRotation(ActorLoc, ActorRot);
+       }
     }
 
 }
