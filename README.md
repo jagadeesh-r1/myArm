@@ -1,6 +1,6 @@
 # UnrealSim
 ## Project Description: 
-This is a VR Simulation of (Human-Guided Planning for Complex Manipulation Tasks Using the Screw Geometry of Motion)[https://irsl-sbu.github.io/Human-Guided-Planning/]
+This is a VR Simulation of [Human-Guided Planning for Complex Manipulation Tasks Using the Screw Geometry of Motion](https://irsl-sbu.github.io/Human-Guided-Planning/)
  
 This project is a VR simulation of a Kitchen environment. The simulation is built using Unreal Engine 4.27.4 and the VR headset used is Oculus Quest. The simulation is built using the Unreal Engine's C++ API. 
 To Navigate in the sim, use the thumsticks on both controllers to get to desired position. We can interact the objects in the simulation using the grip button on the Right VR controller.
