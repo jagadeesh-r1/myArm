@@ -1,4 +1,5 @@
 # Binaries and Built data
+Binaries/*
 Intermediate/*
 DerivedDataCache/*
 Build/*
