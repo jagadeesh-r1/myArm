@@ -9,6 +9,6 @@ public class UnrealSimTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.AddRange( new string[] { "UnrealSim" } );
+		ExtraModuleNames.AddRange( new string[] { "UnrealSim", "WebSockets" } );
 	}
 }

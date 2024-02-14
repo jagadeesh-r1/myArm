@@ -2,7 +2,7 @@
 
 
 #include "WebsocketConnection.h"
-#include "C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Online\WebSockets\Public\WebSocketsModule.h"
+#include "WebSocketsModule.h"
 
 WebsocketConnection::WebsocketConnection()
 {
